@@ -9,8 +9,6 @@ class Show extends StatefulWidget {
 class _ShowState extends State<Show> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-       child: Text('Show records') ,
-    );
+    return  Center(child: Text('Show records'));
   }
 }

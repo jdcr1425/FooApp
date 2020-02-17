@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
            ],
          ),
        ),
-       body: _getDrawerItemWidget(_selectedDrawerItem),
+       body: SafeArea(child: _getDrawerItemWidget(_selectedDrawerItem)),
     );
   }
 }

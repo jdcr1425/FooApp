@@ -62,15 +62,16 @@ class _ThirdBlockState extends State<ThirdBlock> {
         title: Text("Descripción del olor"),
         leading: new Container()
       ),
-      body: ListView(
-         padding: EdgeInsets.all(10.0),
-         children: <Widget>[
-           _olorAfectacion(),
-           _olorResulta(),
-           _olorEmocion(),
-           _olorReaccion()
-         ],
-      ),
+      body:  ListView(
+                padding: EdgeInsets.all(10.0),
+                children: <Widget>[
+                  _olorAfectacion(),
+                  _olorResulta(),
+                  _olorEmocion(),
+                  _olorReaccion()
+                ],
+              ),
+      
       floatingActionButton: Container( 
             width: 110.0,
             height: 50.0,

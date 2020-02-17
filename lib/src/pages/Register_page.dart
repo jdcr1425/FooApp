@@ -78,46 +78,47 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-       child: Container(
-         child: Align(
-           child: Material(
-             color: Colors.white,
-             elevation: 14.0,
-             borderRadius: BorderRadius.circular(24.0),
-             shadowColor: Color(0x802196f3),
-             child: Container(
-               width: 350.0,
-               height: 400.0,
-               child: Column(
-                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(child: Text('¿Percibe algún olor?', style: TextStyle(color: Colors.black, fontSize: 22.0),), )
-                  ),SizedBox(height: 100.0,),
-                  Row(mainAxisAlignment:MainAxisAlignment.center,
-                    
-                    children: <Widget>[
+    return  Center(
+                  child: Container(
+                    child: Align(
+                      child: Material(
+                        color: Colors.white,
+                        elevation: 14.0,
+                        borderRadius: BorderRadius.circular(24.0),
+                        shadowColor: Color(0x802196f3),
+                        child: Container(
+                          width: 350.0,
+                          height: 400.0,
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Container(child: Text('¿Percibe algún olor?', style: TextStyle(color: Colors.black, fontSize: 22.0),), )
+                              ),SizedBox(height: 100.0,),
+                              Row(mainAxisAlignment:MainAxisAlignment.center,
+                                
+                                children: <Widget>[
 
-                    _botonSi(),
-                    SizedBox(width: 60.0),
-                    _botonNo(),
-                    
-                  ],
-                  
-                  ),
-                  SizedBox(height: 70.0),
-                  Padding(padding: EdgeInsets.all(15),
-                  child:Text("Por favor, en caso de tener gripe, rinitis o cualquier problema que  afecte su capacidad olfativa, no continue con el reporte.", style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic )) ,)
-                  
-                  
-                 ],
-               ),
-             ),
-           )
-         ),
-       )
-    );
+                                _botonSi(),
+                                SizedBox(width: 60.0),
+                                _botonNo(),
+                                
+                              ],
+                              
+                              ),
+                              SizedBox(height: 70.0),
+                              Padding(padding: EdgeInsets.all(15),
+                              child:Text("Por favor, en caso de tener gripe, rinitis o cualquier problema que  afecte su capacidad olfativa, no continue con el reporte.", style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic )) ,)
+                              
+                              
+                            ],
+                          ),
+                        ),
+                      )
+                    ),
+           ),
+         
+      );
   }
 
   Widget _botonSi(){

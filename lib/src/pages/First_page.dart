@@ -29,16 +29,17 @@ class _FirstBlockState extends State<FirstBlock> {
         title: Text("Descripción del olor", ),
         leading: new Container()
       ),
-      body: ListView(
-         padding: EdgeInsets.all(10.0),
-         children: <Widget>[
-           _olor(),
-           _intesidadOlor(),
-           _distincionOlor(),
-           _sentimiento()
-           
-         ],
-      ),
+      body:  ListView(
+           padding: EdgeInsets.all(10.0),
+           children: <Widget>[
+             _olor(),
+             _intesidadOlor(),
+             _distincionOlor(),
+             _sentimiento()
+             
+           ],
+        ),
+      
       floatingActionButton: Container( 
             width: 120.0,
             height: 50.0,
