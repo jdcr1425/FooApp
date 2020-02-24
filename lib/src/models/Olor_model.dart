@@ -8,47 +8,35 @@ OlorModelo olorModeloFromJson(String str) => OlorModelo.fromJson(json.decode(str
 
 String olorModeloToJson(OlorModelo data) => json.encode(data.toJson());
 
-///////////////////////////////////
-OlorModelo olorModeloFromJsonNO(String str) => OlorModelo.fromJsonNO(json.decode(str));
-
-String olorModeloToJsonNO(OlorModelo data) => json.encode(data.toJsonNO());
-
-
-
 class OlorModelo {
-    List<dynamic> coordenadas;
-    double temperatura;
+    String lugar;
     List<dynamic> nombreOlor;
     double intensidad;
+    List<dynamic> coordenadas;
+    double temperatura;
     double nivelDistincion;
     double nivelAfectacion;
     double nivelSatisfaccion;
     List<dynamic> nivelEmocion;
     List<dynamic> reaccion;
     String fecha;
-    String lugar;
     String sentimiento;
     List<dynamic> personalInformation;
 
     OlorModelo({
-        this.coordenadas,
+        this.lugar,
         this.nombreOlor,
         this.intensidad,
         this.nivelDistincion,
+        this.sentimiento,
         this.nivelAfectacion,
         this.nivelSatisfaccion,
         this.nivelEmocion,
         this.reaccion,
+        this.coordenadas,
         this.fecha,
-        this.lugar,
-        this.sentimiento,
         this.temperatura,
         this.personalInformation
-    });
-
-    OlorModelo.otro({
-      this.coordenadas,
-      this.fecha
     });
 
     factory OlorModelo.fromJson(Map<String, dynamic> json) => new OlorModelo(
@@ -67,11 +55,6 @@ class OlorModelo {
         personalInformation: new List<dynamic>.from(json["personalInformation"].map((x) => x)),
     );
 
-     factory OlorModelo.fromJsonNO(Map<String, dynamic> json) => new OlorModelo(
-        coordenadas: new List<dynamic>.from(json["Coordenadas"].map((x) => x)),
-        fecha: json["fecha"]
-    );
-
     Map<String, dynamic> toJson() => {
         "Coordenadas": new List<dynamic>.from(coordenadas.map((x) => x)),
         "Nombre_olor": new List<dynamic>.from(nombreOlor.map((x) => x)),
@@ -87,9 +70,5 @@ class OlorModelo {
         "temperatura" : temperatura,
         "personalInformation" : new List<dynamic>.from(personalInformation.map((x) => x)),
 
-    };
-    Map<String, dynamic> toJsonNO() => {
-        "Coordenadas": new List<dynamic>.from(coordenadas.map((x) => x)),
-        "fecha" : fecha
     };
 }

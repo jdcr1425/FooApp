@@ -280,7 +280,7 @@ class _ThirdBlockState extends State<ThirdBlock> {
         olor.fecha=now.toString();
         olor.intensidad= datos['intensidad'];
         olor.nombreOlor = [datos['Nombre'], datos['num']];
-        olor.nivelDistincion = datos['sliderDistincionValue'];
+        olor.nivelDistincion = datos['distincion'];
         olor.nivelAfectacion= sliderAfectacionValue;
         olor.nivelSatisfaccion = sliderResultaValue;
         olor.nivelEmocion=[_currentEmocionSelected,_emociones.indexOf(_currentEmocionSelected)];

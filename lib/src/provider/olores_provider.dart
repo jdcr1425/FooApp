@@ -19,20 +19,4 @@ return true;
 
 }
 
-Future<bool>crearRegistroOlorNO(OlorModelo olor) async{
-final url = '$_url/olores.json';
-final resp = await http.post(url, body:olorModeloToJsonNO(olor));
-
-final decodedData = json.decode(resp.body);
-
-print(decodedData);
-
-return true;
-
-}
-
-
-
-
-
 }

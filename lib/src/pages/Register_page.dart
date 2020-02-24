@@ -24,8 +24,6 @@ class _RegisterState extends State<Register> {
   bool _permission = false;
   String error;
 
-  OlorModelo olor = new OlorModelo.otro();
-
   final olorprovider = new OloresProvider();
 
   bool isbuttondisabled=false;
@@ -175,19 +173,6 @@ class _RegisterState extends State<Register> {
             return alertdialog;
             }
             );
-
-
-
-      /* _currentLocation = await _locationService.getLocation();
-
-      var latitud=_currentLocation.latitude;
-      var longitud = _currentLocation.longitude;
-
-      print('$latitud, $longitud');
-      olor.coordenadas = [latitud, longitud];
-      DateTime now = new DateTime.now();
-      olor.fecha=now.toString();
-      _registrar(context, olor); */
   }
 
   void onpressedSI(context) async{
@@ -207,70 +192,5 @@ class _RegisterState extends State<Register> {
 
       Navigator.pushNamed(context, '/lugar', arguments: coordenadas);
   }
-
-
-
-  void _registrar(BuildContext context, OlorModelo olor) async {
-
-    try {
-        final result = await InternetAddress.lookup('google.com');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        //print('connected');
-        setState(() {
-         isbuttondisabled = true;
-        });
-        olorprovider.crearRegistroOlorNO(olor).then((sucess){
-        setState(() {
-         isbuttondisabled = false; 
-        });    
-        var alertdialog = AlertDialog(
-        title: Text("Fecha y coordenadas registradas"),
-        content: Text("¿Desea continuar en la aplicación?"),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Sí'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          FlatButton(
-            child: Text('No'),
-            onPressed: () {
-              exit(0);
-            },
-          ),
-        ],
-        );
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context){
-            return alertdialog;
-          }
-        );
-        });
-
-        }
-    } on SocketException catch (_) {
-      var alertdialog = AlertDialog(
-        title: Text("No hay conexión"),
-        content: Text("Para poder registrar necesita conexión a internet"),
-        );
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context){
-            return alertdialog;
-          }
-        );
-    }
-    
-    
-    
-
-    
-    
-    
-
-  }
+  
 }
