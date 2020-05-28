@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.orange),
+      theme: ThemeData(primaryColor: Color.fromRGBO(19, 48, 119, 1.0)),
       title: 'Olores',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{

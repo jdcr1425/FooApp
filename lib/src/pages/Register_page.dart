@@ -72,52 +72,50 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Align(
-            child: Material(
-          color: Colors.white,
-          elevation: 14.0,
-          borderRadius: BorderRadius.circular(24.0),
-          shadowColor: Color(0x802196f3),
-          child: Container(
-            width: 350.0,
-            height: 400.0,
-            child: Column(
-              children: <Widget>[
-                Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: Text(
-                        '¿Percibe algún olor?',
-                        style: TextStyle(color: Colors.black, fontSize: 22.0),
-                      ),
-                    )),
-                SizedBox(
-                  height: 100.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _botonSi(),
-                    SizedBox(width: 60.0),
-                    _botonNo(),
-                  ],
-                ),
-                SizedBox(height: 70.0),
-                Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Text(
-                      "Por favor, en caso de tener gripe, rinitis o cualquier problema que  afecte su capacidad olfativa, no continue con el reporte.",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic)),
-                )
-              ],
+        child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 40),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color(0xfff0f0f0),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10.0,
+                      offset: Offset(5, 5))
+                ]),
+            child: Padding(
+              padding: EdgeInsets.all(15),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('¿Percibe algún olor?',
+                      style: TextStyle(color: Colors.black, fontSize: 17)),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _botonSi(),
+                      _botonNo(),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Por favor, en caso de tener gripe, rinitis o cualquier problema que  afecte su capacidad olfativa, no continue con el reporte.",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                    textAlign: TextAlign.justify,
+                  )
+                ],
+              ),
             ),
           ),
-        )),
-      ),
-    );
+      );
   }
 
   Widget _botonSi() {
@@ -126,8 +124,8 @@ class _RegisterState extends State<Register> {
       color: Colors.orange,
       textColor: Colors.white,
       onPressed: isbuttondisabled ? null : () => onpressedSI(context),
-      padding: EdgeInsets.all(15),
-      child: Text('SÍ', style: TextStyle(fontSize: 20.0)),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: Text('SÍ', style: TextStyle(fontSize: 15.0)),
     );
   }
 
@@ -137,10 +135,10 @@ class _RegisterState extends State<Register> {
       color: Colors.orange,
       textColor: Colors.white,
       onPressed: isbuttondisabled ? null : () => onpressedNo(context),
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: Text(
         'NO',
-        style: TextStyle(fontSize: 20.0),
+        style: TextStyle(fontSize: 15.0),
       ),
     );
   }
