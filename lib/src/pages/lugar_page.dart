@@ -9,7 +9,6 @@ class LugarPage extends StatefulWidget {
 }
 
 class _LugarPageState extends State<LugarPage> {
-
   @override
   void initState() {
     super.initState();
@@ -18,11 +17,6 @@ class _LugarPageState extends State<LugarPage> {
   @override
   Widget build(BuildContext context) {
     final List<double> datos = ModalRoute.of(context).settings.arguments;
-
-    TextStyle textCardStyle = new TextStyle(fontSize: 20.0);
-    TextStyle questionCardText =
-        new TextStyle(color: Colors.black, fontSize: 22.0);
-
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
@@ -30,32 +24,31 @@ class _LugarPageState extends State<LugarPage> {
             "Descripción del Lugar",
           )),
       body: Center(
-          child: Container(
-        child: Align(
-            child: Material(
-          color: Colors.white,
-          elevation: 14.0,
-          borderRadius: BorderRadius.circular(24.0),
-          shadowColor: Color(0x802196f3),
-          child: Container(
-            width: 350.0,
-            height: 400.0,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 40),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xfff0f0f0),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10.0,
+                    offset: Offset(5, 5))
+              ]),
+          child: Padding(
+            padding: EdgeInsets.all(15),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: Text(
-                        '¿Se encuentra usted en un lugar...?',
-                        style: questionCardText,
-                        textAlign: TextAlign.center,
-                      ),
-                    )),
+                Text('¿Se encuentra usted en un lugar...?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black, fontSize: 17)),
                 SizedBox(
-                  height: 100.0,
+                  height: 40,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     RaisedButton(
                       shape: RoundedRectangleBorder(
@@ -64,12 +57,13 @@ class _LugarPageState extends State<LugarPage> {
                       textColor: Colors.white,
                       onPressed: () {
                         var obj = {'Coordenadas': datos, 'lugar': 'A'};
-                        Navigator.pushNamed(context, FirstBlock.routeName, arguments: obj);
+                        Navigator.pushNamed(context, FirstBlock.routeName,
+                            arguments: obj);
                       },
-                      padding: EdgeInsets.all(15),
-                      child: Text('Abierto', style: textCardStyle),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      child: Text('Abierto', style: TextStyle(fontSize: 15.0)),
                     ),
-                    SizedBox(width: 60.0),
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
@@ -77,18 +71,23 @@ class _LugarPageState extends State<LugarPage> {
                       textColor: Colors.white,
                       onPressed: () {
                         var obj = {'Coordenadas': datos, 'lugar': 'C'};
-                        Navigator.pushNamed(context, FirstBlock.routeName, arguments: obj);
+                        Navigator.pushNamed(context, FirstBlock.routeName,
+                            arguments: obj);
                       },
-                      padding: EdgeInsets.all(15),
-                      child: Text('Cerrado', style: textCardStyle),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      child: Text(
+                        'Cerrado',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
                     )
                   ],
                 ),
               ],
             ),
           ),
-        )),
-      )),
+        ),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:olores/src/pages/Personal_information_page.dart';
@@ -75,7 +76,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Olores'),
+        title: Text('Olores', style: GoogleFonts.roboto()),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -85,76 +86,84 @@ class _HomeState extends State<Home> {
               })
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName:
-                  Text(this._name.isEmpty ? "Proyecto olores" : this._name),
-              accountEmail: Text(this.profession.isEmpty
-                  ? "Facultad Ingenieria"
-                  : this.profession),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.blue,
-                child: Text(
-                  this.initials.isNotEmpty ? this.initials : "UTB",
-                  style: TextStyle(fontSize: 30.0),
+      drawer: Container(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: Drawer(
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  this._name.isEmpty ? "Proyecto olores" : this._name,
+                  style: GoogleFonts.roboto(),
+                ),
+                accountEmail: Text(
+                    this.profession.isEmpty
+                        ? "Facultad Ingenieria"
+                        : this.profession,
+                    style: GoogleFonts.roboto()),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Text(
+                    this.initials.isNotEmpty ? this.initials : "UTB",
+                    style: GoogleFonts.roboto(
+                        textStyle: TextStyle(fontSize: 30.0)),
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              title: Text('Registrar olor'),
-              selected: (_selectedDrawerItem == 0),
-              leading: Icon(Icons.add),
-              onTap: () {
-                if (_selectedDrawerItem != 0) {
-                  Navigator.of(context).pop();
-                }
-
-                setState(() {
-                  _selectedDrawerItem = 0;
-                });
-              },
-            ),
-            ListTile(
-              title: Text('Mostrar registros'),
-              selected: (_selectedDrawerItem == 1),
-              leading: Icon(Icons.show_chart),
-              onTap: () {
-                if (_selectedDrawerItem != 1) {
-                  Navigator.of(context).pop();
-                }
-                setState(() {
-                  _selectedDrawerItem = 1;
-                });
-              },
-            ),
-            ListTile(
-                title: Text(
-                    this._name.isEmpty ? "Iniciar sesión" : "Cerrar sesión"),
-                selected: (_selectedDrawerItem == 2),
-                leading: this._name.isNotEmpty
-                    ? Icon(Icons.cancel)
-                    : Icon(Icons.arrow_right),
+              ListTile(
+                title: Text('Registrar olor'),
+                selected: (_selectedDrawerItem == 0),
+                leading: Icon(Icons.add),
                 onTap: () {
-                  if (this._name.isEmpty) {
-                    if (_selectedDrawerItem != 2) {
-                      Navigator.of(context).pop();
-                    }
-                    setState(() {
-                      _selectedDrawerItem = 2;
-                    });
-                  } else {
-                    _deleteUser();
+                  if (_selectedDrawerItem != 0) {
+                    Navigator.of(context).pop();
                   }
-                }),
-            ListTile(
-                title: Text("Salir"),
-                leading: Icon(Icons.exit_to_app),
+
+                  setState(() {
+                    _selectedDrawerItem = 0;
+                  });
+                },
+              ),
+              ListTile(
+                title: Text('Mostrar registros'),
+                selected: (_selectedDrawerItem == 1),
+                leading: Icon(Icons.show_chart),
                 onTap: () {
-                  exit(0);
-                })
-          ],
+                  if (_selectedDrawerItem != 1) {
+                    Navigator.of(context).pop();
+                  }
+                  setState(() {
+                    _selectedDrawerItem = 1;
+                  });
+                },
+              ),
+              ListTile(
+                  title: Text(
+                      this._name.isEmpty ? "Registrar datos personales" : "Borrar datos personales"),
+                  selected: (_selectedDrawerItem == 2),
+                  leading: this._name.isNotEmpty
+                      ? Icon(Icons.cancel)
+                      : Icon(Icons.arrow_right),
+                  onTap: () {
+                    if (this._name.isEmpty) {
+                      if (_selectedDrawerItem != 2) {
+                        Navigator.of(context).pop();
+                      }
+                      setState(() {
+                        _selectedDrawerItem = 2;
+                      });
+                    } else {
+                      _deleteUser();
+                    }
+                  }),
+              ListTile(
+                  title: Text("Salir"),
+                  leading: Icon(Icons.exit_to_app),
+                  onTap: () {
+                    exit(0);
+                  })
+            ],
+          ),
         ),
       ),
       body: SafeArea(child: _getDrawerItemWidget(_selectedDrawerItem)),

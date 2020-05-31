@@ -102,7 +102,7 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 40,
                   ),
                   Text(
                     "Por favor, en caso de tener gripe, rinitis o cualquier problema que  afecte su capacidad olfativa, no continue con el reporte.",
