@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:olores/src/pages/third_page.dart';
 
-
 class FirstBlock extends StatefulWidget {
   FirstBlock({Key key}) : super(key: key);
 
   _FirstBlockState createState() => _FirstBlockState();
   static final routeName = 'first';
-
 }
 
 class _FirstBlockState extends State<FirstBlock> {
-
   static final _olores = [
     'Orina',
     'Huevo podrido',
@@ -26,7 +23,8 @@ class _FirstBlockState extends State<FirstBlock> {
     'Humo',
     'Ácido',
     'Carnicerías y pollerías',
-    'Dulce'
+    'Dulce',
+    'Otro'
   ];
   String _currentItemSelected = _olores[0];
   double sliderIntensidadValue = 5.0;
@@ -40,32 +38,45 @@ class _FirstBlockState extends State<FirstBlock> {
     Map<String, Object> datos = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "Descripción del olor",
-            ),
-            leading: new Container()),
-        body: ListView(
-          padding: EdgeInsets.all(10.0),
-          children: <Widget>[
-            _olor(),
-            _intesidadOlor(),
-            _distincionOlor(),
-            _sentimiento()
-          ],
-        ),
-        floatingActionButton: Container(
-          width: 120.0,
-          height: 50.0,
-          child: FlatButton(
-            color: Colors.orange,
-            onPressed: () => _nextPage(datos, context),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[Icon(Icons.arrow_right), Text("Siguiente")]),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Descripción del olor",
           ),
-        ));
+          leading: new Container()),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+              child: ListView(
+            padding: EdgeInsets.all(10),
+            children: <Widget>[
+              _olor(),
+              _intesidadOlor(),
+              _distincionOlor(),
+              _sentimiento(),
+            ],
+          ))
+        ],
+      ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+        child: RaisedButton(
+          color: Colors.orange,
+          textColor: Colors.white,
+          onPressed: () => _nextPage(datos, context),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(Icons.arrow_right),
+              Text('Siguiente', style: TextStyle(fontSize: 16.0)),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   _nextPage(datos, context) {
@@ -84,13 +95,13 @@ class _FirstBlockState extends State<FirstBlock> {
 
   Widget _olor() {
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Container(
           padding: EdgeInsets.all(15.0),
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text("¿A qué huele?",
@@ -118,7 +129,7 @@ class _FirstBlockState extends State<FirstBlock> {
     TextStyle negrita = TextStyle(fontWeight: FontWeight.bold);
 
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -156,7 +167,7 @@ class _FirstBlockState extends State<FirstBlock> {
     TextStyle negrita = TextStyle(fontWeight: FontWeight.bold);
 
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -192,7 +203,7 @@ class _FirstBlockState extends State<FirstBlock> {
 
   _sentimiento() {
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),

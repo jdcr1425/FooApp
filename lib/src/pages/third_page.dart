@@ -7,7 +7,6 @@ import 'package:olores/src/provider/weather_provider.dart';
 import 'dart:convert';
 
 class ThirdBlock extends StatefulWidget {
-
   ThirdBlock({Key key}) : super(key: key);
 
   _ThirdBlockState createState() => _ThirdBlockState();
@@ -78,35 +77,45 @@ class _ThirdBlockState extends State<ThirdBlock> {
             centerTitle: true,
             title: Text("Descripción del olor"),
             leading: new Container()),
-        body: ListView(
-          padding: EdgeInsets.all(10.0),
+        body: Column(
           children: <Widget>[
-            _olorAfectacion(),
-            _olorResulta(),
-            _olorEmocion(),
-            _olorReaccion()
+            Expanded(
+                child: ListView(
+              padding: EdgeInsets.all(10.0),
+              children: <Widget>[
+                _olorAfectacion(),
+                _olorResulta(),
+                _olorEmocion(),
+                _olorReaccion()
+              ],
+            ))
           ],
         ),
-        floatingActionButton: Container(
-          width: 110.0,
-          height: 50.0,
-          child: FlatButton(
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+          child: RaisedButton(
             color: Colors.orange,
+            textColor: Colors.white,
             onPressed:
                 isbuttondisabled ? null : () => _registrar(datos, context),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[Icon(Icons.save), Text("Guardar")]),
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Icon(Icons.save),
+                Text('Guardar', style: TextStyle(fontSize: 16.0)),
+              ],
+            ),
           ),
         ));
   }
 
   Widget _olorAfectacion() {
-    
     TextStyle negrita = TextStyle(fontWeight: FontWeight.bold);
 
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -115,8 +124,10 @@ class _ThirdBlockState extends State<ThirdBlock> {
             child: Column(
               children: <Widget>[
                 Text(
-                    "¿Que tanto afecta el olor que percibes tu estado de ánimo?",
-                    style: TextStyle(color: Colors.black, fontSize: 17.0)),
+                  "¿Que tanto afecta el olor que percibes tu estado de ánimo?",
+                  style: TextStyle(color: Colors.black, fontSize: 17.0),
+                  textAlign: TextAlign.center,
+                ),
                 Slider(
                   min: 0.0,
                   max: 10.0,
@@ -145,7 +156,7 @@ class _ThirdBlockState extends State<ThirdBlock> {
     TextStyle negrita = TextStyle(fontWeight: FontWeight.bold);
 
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -153,8 +164,11 @@ class _ThirdBlockState extends State<ThirdBlock> {
             padding: EdgeInsets.all(15.0),
             child: Column(
               children: <Widget>[
-                Text("Ese olor que percibes, ¿te resulta?",
-                    style: TextStyle(color: Colors.black, fontSize: 17.0)),
+                Text(
+                  "Ese olor que percibes, ¿te resulta?",
+                  style: TextStyle(color: Colors.black, fontSize: 17.0),
+                  textAlign: TextAlign.center,
+                ),
                 Slider(
                   min: 0.0,
                   max: 10.0,
@@ -181,17 +195,20 @@ class _ThirdBlockState extends State<ThirdBlock> {
 
   Widget _olorEmocion() {
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Container(
           padding: EdgeInsets.all(15.0),
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("¿Qué emoción le genera el olor?",
-                  style: TextStyle(color: Colors.black, fontSize: 17.0)),
+              Text(
+                "¿Qué emoción le genera el olor?",
+                style: TextStyle(color: Colors.black, fontSize: 17.0),
+                textAlign: TextAlign.center,
+              ),
               DropdownButton<String>(
                 items: _emociones.map((String dropDownStringItem) {
                   return DropdownMenuItem<String>(
@@ -213,7 +230,7 @@ class _ThirdBlockState extends State<ThirdBlock> {
 
   Widget _olorReaccion() {
     return Card(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(bottom: 10),
         elevation: 10.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -222,8 +239,11 @@ class _ThirdBlockState extends State<ThirdBlock> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("¿Qué reacción le produce?",
-                  style: TextStyle(color: Colors.black, fontSize: 17.0)),
+              Text(
+                "¿Qué reacción le produce?",
+                style: TextStyle(color: Colors.black, fontSize: 17.0),
+                textAlign: TextAlign.center,
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -258,7 +278,7 @@ class _ThirdBlockState extends State<ThirdBlock> {
         FlatButton(
           child: Text('Sí'),
           onPressed: () {
-            Navigator.pushNamed(context, '/');
+            Navigator.pushReplacementNamed(context, '/');
           },
         ),
         FlatButton(
